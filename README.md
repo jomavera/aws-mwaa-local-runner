@@ -1,6 +1,6 @@
 # Python, MySQL and Airflow for data analysis
 
-This project allow to generate a docker container with a MySQL database and airflow server to automate analysis tasks. This allows us to make queries using Python to the MySQL database in our local environment.
+This project allows to generate a docker container with a MySQL database and airflow server to automate analysis tasks. We can make automated queries from airflow using sqlalchemy to the MySQL database from our local environment.
 
 ## Technologies
 
@@ -24,13 +24,13 @@ This project allow to generate a docker container with a MySQL database and airf
 
 2. Access the airflow server from `localhost:8080`. The user is `admin` and password `test`.
 
-3. Run the "ExtractLoadTransform" DAG. This will query the MySQL database and generate an excel file for each query. Since I haven't implemented a connection to a cloud storage I stored the output files in the same server as airflow. This excel files will be stored in the airflow server in the `/usr/local/airflow/` directory.
+3. Run manually the "ExtractLoadTransform" DAG from the airflow UI. This will query the MySQL database and generate an excel file for each query. Since I haven't implemented a connection to a cloud storage I stored the output files in the same server as airflow. This excel files will be stored in the airflow server in the `/usr/local/airflow/` directory.
 
 4. Get the container id to acces the saved files. It is necessary to get the container id to acces to its stored files. Run `docker ps` and save the container id for the image "amazon/mwaa-local:2_8"
 
-5. Copy generated answer files from docker container. To download the files run the following command for each one of the 5 answers. Replace `[X]` with 1 to 5:
+5. Copy the generated answer files from docker container. To download the files run the following command for each one of the 5 answers. Replace `[X]` with 1 to 5:
 
-      `docker cp <containerId>:/usr/local/airflow/answer_[X].xlsx answer_[X].xlsx`
+      `docker cp <containerId>:/usr/local/airflow/answer_[X].xlsx /path/to/local/directory/answer_[X].xlsx`
 
 ### Queries
 
