@@ -13,6 +13,17 @@ services:
         volumes:
             - "${PWD}/db-data:/var/lib/postgresql/data"
 
+    dw:
+        image: mysql:latest
+        container_name: dw
+        environment:
+            MYSQL_ROOT_PASSWORD: rootpassword
+            MYSQL_DATABASE: dw
+            MYSQL_USER: myuser
+            MYSQL_PASSWORD: mypassword
+        ports:
+            - "3306:3306" 
+
     local-runner:
         image: amazon/mwaa-local:2_8
         restart: always
